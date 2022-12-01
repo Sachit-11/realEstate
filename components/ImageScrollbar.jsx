@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Box, Icon, Flex } from '@chakra-ui/react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import DefaultImage from "../assets/images/house.jpg";
 
 const LeftArrow = () => {
   const { scrollPrev } = useContext(VisibilityContext);
@@ -42,7 +43,7 @@ const ImageScrollbar = ({ data }) => {
         // relative position is required for fill to work
         <Box width = '920px' height = "690px" key = {item.id} position = "relative">
         {/* blurDataUrl required Base64 img so it won't work currently*/}
-          <Image placeholder = "blur" blurDataURL = {item.url} src = {item.url} fill key = {item.id}/>
+          <Image placeholder = "blur" blurDataURL = {item.url ? item.url : DefaultImage} src = {item.url ? item.url : DefaultImage} fill key = {item.id} alt = "house"/>
         </Box>
       );
     })}
